@@ -22,6 +22,9 @@ class Industry(models.Model):
     name = models.CharField(max_length=225)
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 class Client(models.Model):
     industry = models.ForeignKey(Industry, null = True, on_delete=models.CASCADE)
     name = models.CharField(max_length=225)
@@ -29,6 +32,9 @@ class Client(models.Model):
     phone_number = models.CharField(max_length= 20, null = True)
     active = models.BooleanField(default= False)
     user = models.ForeignKey(User, null = True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 class Project(models.Model):
     title = models.CharField(max_length=225)
@@ -39,6 +45,8 @@ class Project(models.Model):
     end_date = models.DateField()
     total_costs = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+        return self.title
 
 class Task(models.Model):
     title = models.CharField(max_length=225)
@@ -50,3 +58,5 @@ class Task(models.Model):
     last_modified_date = models.DateTimeField()
     last_modified_by = models.ForeignKey(User, related_name='modified_tasks', null = True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title

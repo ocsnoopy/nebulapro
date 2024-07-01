@@ -26,11 +26,17 @@ class Cost(models.Model):
     project = models.ForeignKey(Project, null = False, on_delete=models.CASCADE)
     status = models.CharField(max_length=225, choices=COST_STATUS_CHOICES, default = 'requested')
 
+    def __str__(self):
+        return self.name
+
 class CostApprovalRequest(models.Model):
     name = models.CharField(max_length=225)
     cost = models.ForeignKey(Cost, null = False, on_delete=models.CASCADE)
     status = models.CharField(max_length=225, choices=COST_APPROVAL_REQUEST_STATUS_CHOICES, default = 'draft')
     task = models.ForeignKey(Task, null = False, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 class Payment(models.Model):
     pass
