@@ -24,6 +24,7 @@ TASK_STATUS_CHOICES = (
 class Industry(models.Model):
     name = models.CharField(max_length=225)
     description = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -38,6 +39,7 @@ class Client(models.Model):
     phone_number = models.CharField(max_length= 20, null = True)
     active = models.BooleanField(default= False)
     user = models.ForeignKey(User, null = True, on_delete=models.SET_NULL)  
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -47,6 +49,7 @@ class Project(models.Model):
     active = models.BooleanField(default= False)
     client = models.ForeignKey(Client, null = False, on_delete=models.CASCADE)
     status = models.CharField(max_length=225, choices=PROJECT_STATUS_CHOICES, default = 'draft')
+    created_date = models.DateTimeField(auto_now_add=True)
     start_date = models.DateField()
     end_date = models.DateField()
     total_costs = models.DecimalField(max_digits=10, decimal_places=2)
@@ -60,6 +63,7 @@ class Task(models.Model):
     status = models.CharField(max_length=225, choices=TASK_STATUS_CHOICES, default = 'back_log')
     reporter = models.ForeignKey(User, related_name='reported_tasks', null = True, on_delete=models.SET_NULL)
     assignee = models.ForeignKey(User, related_name='assigned_tasks', null = True, on_delete=models.SET_NULL)
+    created_date = models.DateTimeField(auto_now_add=True)
     deadline_date = models.DateField()
     last_modified_date = models.DateTimeField()
     last_modified_by = models.ForeignKey(User, related_name='modified_tasks', null = True, on_delete=models.SET_NULL)

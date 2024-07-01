@@ -25,6 +25,7 @@ class Cost(models.Model):
     description = models.TextField()
     project = models.ForeignKey(Project, null = False, on_delete=models.CASCADE)
     status = models.CharField(max_length=225, choices=COST_STATUS_CHOICES, default = 'requested')
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -34,6 +35,7 @@ class CostApprovalRequest(models.Model):
     cost = models.ForeignKey(Cost, null = False, on_delete=models.CASCADE)
     status = models.CharField(max_length=225, choices=COST_APPROVAL_REQUEST_STATUS_CHOICES, default = 'draft')
     task = models.ForeignKey(Task, null = False, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
