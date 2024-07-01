@@ -19,7 +19,7 @@ COST_APPROVAL_REQUEST_STATUS_CHOICES = (
 
 class Cost(models.Model):
     name = models.CharField(max_length=225)
-    decimal_field = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
     client = models.ForeignKey(Client, null = False, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, null = False, on_delete=models.CASCADE)
     description = models.TextField()
