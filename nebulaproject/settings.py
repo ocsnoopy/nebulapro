@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -93,7 +94,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    # os.path.join(BASE_DIR, 'static'),  
+    'task_management/static',           
 ]
 
 AUTH_USER_MODEL = 'user_management.User'
