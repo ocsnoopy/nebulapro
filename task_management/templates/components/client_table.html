@@ -15,10 +15,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for client in client_list %}
+                {% for client in clients %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ client.name }}</td>
+                    <td><a href="{% url 'client_projects' client.id %}">{{ client.name }}</a></td>
                     <td>{{ client.email }}</td>
                     <td>{{ client.phone_number }}</td>
                     <td>{{ client.industry.name }}</td>
