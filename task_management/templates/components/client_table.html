@@ -1,0 +1,39 @@
+<div class="container table-container">
+    <div class="table-responsive">
+        <h1 class="text-center mb-4">Client List</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Industry</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Created Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in client_list %}
+                <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.phone_number }}</td>
+                    <td>{{ client.industry.name }}</td>
+                    <td class="{% if client.active %}active-true{% else %}active-false{% endif %}">
+                        {% if client.active %}
+                            Active
+                        {% else %}
+                            Inactive
+                        {% endif %}
+                    </td>
+                    <td>{{ client.user.username }}</td>
+                    <td>{{ client.created_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

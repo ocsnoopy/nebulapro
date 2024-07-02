@@ -1,0 +1,34 @@
+.table th, .table td {
+    padding: 15px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  
+    height: 100vh;
+    margin-top: 50px; 
+}
+
+.active-true {
+    color: green;
+}
+.active-false {
+    color: red;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+background-color: #f2f2f2; 
+}
+.table-striped tbody tr:nth-of-type(odd) {
+background-color: white; 
+}
+
+.active-true {
+background-color: green;
+color: white;
+}
+.active-false {
+background-color: red;
+color: white;
+}
