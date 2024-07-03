@@ -17,7 +17,11 @@
                 {% for project in projects %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ project.title }}</td>
+                    <td>
+                        <a href="{% url 'project_tasks' project.id%}">
+                            {{ project.title }}
+                        </a>
+                    </td>
                     <td class="{% if project.status == 'draft' %}status-draft{% elif project.status == 'in_progress' %}status-in-progress{% elif project.status == 'done' %}status-done{% endif %}">
                         {{ project.get_status_display|title }}
                     </td>

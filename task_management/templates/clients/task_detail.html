@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Detail</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Detail: {{ task.title }}</h1>
+        <p><strong>Status:</strong> {{ task.get_status_display }}</p>
+        <p><strong>Project:</strong> {{ task.project }}</p>
+        <p><strong>Reporter:</strong> {{ task.reporter }}</p>
+        <p><strong>Assignee:</strong> {{ task.assignee }}</p>
+        <p><strong>Created Date:</strong> {{ task.created_date }}</p>
+        <p><strong>Deadline Date:</strong> {{ task.deadline_date }}</p>
+        <p><strong>Last Modified:</strong> {{ task.last_modified_date }}</p>
+        <p><strong>Last Modified By:</strong> {{ task.last_modified_by }}</p>
+    </div>
+</body>
+</html>
