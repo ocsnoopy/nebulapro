@@ -95,7 +95,9 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, 'static'),  
-    'task_management/static',           
+    'task_management/static',
+    'user_management/static',     
+    'charges/static',                                     
 ]
 
 AUTH_USER_MODEL = 'user_management.User'

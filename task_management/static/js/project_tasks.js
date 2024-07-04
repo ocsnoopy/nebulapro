@@ -23,14 +23,37 @@ const drop = (event) => {
         event.target.appendChild(element);
         unwrap(event.target);
 
-        const projectId = element.id;
-        const newStatus = event.target.dataset.status; 
+        const taskId = element.id.split('-')[1]; 
+        const newStatus = event.target.dataset.status;
 
-        updateProjectStatus(projectId, newStatus);
+        updateTaskStatus(taskId, newStatus); 
     } catch (error) {
         console.warn("Can't move the item to the same place");
     }
     updateDropzones();
+};
+
+const updateTaskStatus = (taskId, newStatus) => {
+    fetch(`/update_task_status/${taskId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify({ status: newStatus }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Task status updated successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error updating task status:', error);
+    });
 };
 
 const updateDropzones = () => {

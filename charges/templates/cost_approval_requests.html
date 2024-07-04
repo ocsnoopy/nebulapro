@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Approval Requests</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/cost_approval_requests.css' %}">
+</head>
+<body>
+    <div class="container table-container">
+        <div class="table-responsive">
+            <h1 class="text-center mb-4">Cost Approval Requests</h1>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Task</th>
+                        <th scope="col">Created Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in cost_approval_requests %}
+                    <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ request.name }}</td>
+                        <td>{{ request.cost }}</td>
+                        <td>{{ request.get_status_display }}</td>
+                        <td>{{ request.task }}</td>
+                        <td>{{ request.created_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

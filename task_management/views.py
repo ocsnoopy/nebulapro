@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
-from .models import Client, Project, Task
+from django.views.generic import ListView, DetailView
+from .models import Client, Project, Task, Industry
+from django.http import JsonResponse
 
 
 class ClientListView(ListView):
@@ -13,7 +14,6 @@ class ClientProjectsListView(ListView):
     template_name = 'clients/client_projects.html'
     context_object_name = 'projects'
 
-
     def get_queryset(self):
         client_id = self.kwargs['pk']
         client = get_object_or_404(Client, pk=client_id)
@@ -25,6 +25,16 @@ class ClientProjectsListView(ListView):
         client = get_object_or_404(Client, pk=client_id)
         context['client'] = client
         return context
+    
+class IndustriesListView(ListView):
+    model = Industry
+    template_name = 'industries_list.html'
+    context_object_name = 'industries'
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'clients/task_detail.html'  
+    context_object_name = 'task' 
 
 def project_tasks(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
@@ -44,6 +54,9 @@ def project_tasks(request, project_id):
         'status_data': status_data
     })
 
-def task_detail(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    return render(request, 'clients/task_detail.html', {'task': task})
+def update_task_status(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    new_status = request.POST.get('status')
+    task.status = new_status
+    task.save()
+    return JsonResponse({'message': 'Task status updated successfully'})

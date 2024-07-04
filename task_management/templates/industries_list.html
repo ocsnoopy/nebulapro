@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries List</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/industry_list.css' %}">
+</head>
+<body>
+    <div class="container table-container">
+        <div class="table-responsive">
+            <h1 class="text-center mb-4">Industry List</h1>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Created Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for industry in industries %}
+                    <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ industry.name }}</td>
+                        <td>{{ industry.description }}</td>
+                        <td>{{ industry.created_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
