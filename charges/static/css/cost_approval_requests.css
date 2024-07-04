@@ -1,7 +1,9 @@
+/* General table styling */
 .table th, .table td {
     padding: 12px; 
 }
 
+/* Container styling */
 .table-container {
     display: flex;
     justify-content: center;
@@ -10,6 +12,7 @@
     margin-top: 50px;
 }
 
+/* Alternating row colors */
 .table-bordered tbody tr:nth-of-type(even) {
     background-color: #f2f2f2; 
 }
@@ -18,7 +21,23 @@
     background-color: white; 
 }
 
-.text-center {
-    text-align: center;
+#status-draft {
+    background-color: #ffeeba; 
 }
 
+#status-sent {
+    background-color: #d4edda; 
+}
+
+#status-accepted {
+    background-color: #0ab131;
+}
+
+#status-rejected {
+    background-color: #f8d7da; 
+}
+
+/* Center text */
+#text-center {
+    text-align: center;
+}

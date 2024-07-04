@@ -22,3 +22,27 @@
 .text-center {
     text-align: center;
 }
+
+.status-requested { 
+    background-color: #ffc107; 
+}
+
+.status-pending_approval { 
+    background-color: #17a2b8; 
+}
+.status-approved { 
+    background-color: #28a745; 
+}
+.status-rejected { 
+    background-color: #dc3545; 
+}
+.status-paid { 
+    background-color: #007bff; 
+}
+
+.table-striped-row-grey {
+    background-color: #f8f9fa;
+}
+.table-striped-row-white {
+    background-color: #ffffff;
+}

@@ -31,12 +31,12 @@
                     <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ cost.name }}</td>
-                        <td>{{ cost.amount }}</td>
+                        <td>€{{ cost.amount }}</td>
                         <td>{{ cost.client }}</td>
                         <td>{{ cost.task }}</td>
                         <td>{{ cost.description }}</td>
                         <td>{{ cost.project }}</td>
-                        <td>{{ cost.status|title }}</td>
+                        <td class="status-{{ cost.status }}">{{ cost.get_status_display }}</td>
                         <td>{{ cost.created_date }}</td>
                     </tr>
                     {% endfor %}

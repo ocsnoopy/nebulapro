@@ -29,8 +29,8 @@
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ request.name }}</td>
                         <td>{{ request.cost }}</td>
-                        <td>{{ request.get_status_display }}</td>
-                        <td>{{ request.task }}</td>
+                        <td id = "status-{{ request.status }}">{{ request.get_status_display }}</td>
+                        <td >{{ request.task }}</td>
                         <td>{{ request.created_date }}</td>
                     </tr>
                     {% endfor %}
