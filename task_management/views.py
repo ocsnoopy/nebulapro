@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Client, Project, Task, Industry
-from django.http import JsonResponse
-
 
 class ClientListView(ListView):
     model = Client
@@ -53,10 +51,3 @@ def project_tasks(request, project_id):
         'project': project,
         'status_data': status_data
     })
-
-def update_task_status(request, task_id):
-    task = get_object_or_404(Task, pk=task_id)
-    new_status = request.POST.get('status')
-    task.status = new_status
-    task.save()
-    return JsonResponse({'message': 'Task status updated successfully'})

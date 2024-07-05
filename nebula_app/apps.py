@@ -1,7 +1,8 @@
 from django.apps import AppConfig
 
 
-class ChargesConfig(AppConfig):
+class NebulaAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'charges'
+    name = 'nebula_app'
+    verbose_name = 'Nebula App'
 

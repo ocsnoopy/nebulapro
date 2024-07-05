@@ -23,11 +23,7 @@
                     <td>{{ client.phone_number }}</td>
                     <td>{{ client.industry.name }}</td>
                     <td class="{% if client.active %}active-true{% else %}active-false{% endif %}">
-                        {% if client.active %}
-                            Active
-                        {% else %}
-                            Inactive
-                        {% endif %}
+                        {% if client.active %} Active {% else %} Inactive {% endif %}
                     </td>
                     <td>{{ client.user.username }}</td>
                     <td>{{ client.created_date }}</td>

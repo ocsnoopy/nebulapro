@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nebula_app',
     'user_management',
     'task_management',
     'charges',
@@ -94,10 +95,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'static'),  
-    'task_management/static',
-    'user_management/static',     
-    'charges/static',                                     
+    os.path.join(BASE_DIR, 'static'),                              
 ]
 
 AUTH_USER_MODEL = 'user_management.User'
