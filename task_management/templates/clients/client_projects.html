@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects for {{ client.name }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/project_styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Client Projects{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project_styles.css' %}">
+{% endblock %}
+
+{% block content %}
     {% include 'components/project_table.html'%}
-</body>
-</html>
+{% endblock %}

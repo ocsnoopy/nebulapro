@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
     <div class="container">
         <h1>Task Detail: {{ task.title }}</h1>
         <p><strong>Status:</strong> {{ task.get_status_display }}</p>
@@ -17,5 +15,4 @@
         <p><strong>Last Modified:</strong> {{ task.last_modified_date }}</p>
         <p><strong>Last Modified By:</strong> {{ task.last_modified_by }}</p>
     </div>
-</body>
-</html>
+{% endblock %}

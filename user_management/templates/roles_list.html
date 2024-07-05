@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roles List</title>
-    {% load static %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/roles_list.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Roles{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/roles_list.css' %}">
+{% endblock %}
+
+{% block content %}
     <div class="container table-container">
         <div class="table-responsive">
             <h1 class="text-center mb-4">Roles List</h1>
@@ -34,5 +33,4 @@
             </table>
         </div>
     </div>    
-</body>
-</html>
+{% endblock %}

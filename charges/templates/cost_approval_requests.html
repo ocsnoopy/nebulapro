@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cost Approval Requests</title>
-    {% load static %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/cost_approval_requests.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cost Approval Requests{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cost_approval_requests.css' %}">
+{% endblock %}
+
+{% block content %}
     <div class="container table-container">
         <div class="table-responsive">
             <h1 class="text-center mb-4">Cost Approval Requests</h1>
@@ -38,5 +37,4 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
