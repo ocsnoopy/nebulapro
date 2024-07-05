@@ -3,6 +3,6 @@ body {
     padding: 0; 
     background-image: url('../img/nebula.jpg'); 
     background-size: cover;
-    background-position: top;
+    background-position: right 15% bottom 75%;
     background-repeat: no-repeat; 
 }
