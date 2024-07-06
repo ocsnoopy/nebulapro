@@ -1,9 +1,8 @@
 <div class="container-fluid pt-3">
     <h3 class="font-weight-light text-black">Tasks for {{ project.title }}</h3>
-    <!-- <div class="small text-white">Drag and drop between swim lanes</div> -->
-    <div class="row flex-row flex-sm-nowrap py-3">
-            {% for category, tasks in status_data.items %}
-            <div class="col-sm-6 col-md-4 col-xl-3">
+    <div class="row py-3">
+        {% for category, tasks in status_data.items %}
+            <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
                 <div class="card bg-light">
                     <div class="card-body">
                         <h6 class="card-title text-uppercase text-truncate py-2">{{ category }}</h6>

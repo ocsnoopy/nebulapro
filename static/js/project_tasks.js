@@ -17,37 +17,52 @@ const drag = (event) => {
     event.preventDefault();
     const data = event.dataTransfer.getData("text/plain");
     const element = document.querySelector(`#${data}`);
-    try {
-      // remove the spacer content from dropzone
-      event.target.removeChild(event.target.firstChild);
-      // add the draggable content
-      event.target.appendChild(element);
-      // remove the dropzone parent
-      unwrap(event.target);
-    } catch (error) {
-      console.warn("can't move the item to the same place")
+    const newStatus = event.target.getAttribute('data-status');
+
+    if (!element) {
+        console.error("Element not found for ID:", data);
+        return;
     }
+
+    try {
+        event.target.removeChild(event.target.firstChild);
+        event.target.appendChild(element);
+        unwrap(event.target);
+    } catch (error) {
+        console.warn("Can't move the item to the same place:", error);
+    }
+    
+    jQuery.ajax({
+        url: '/update_task_status/',
+        method: 'POST',
+        data: {
+            task_id: data.split('-')[1],
+            new_status: newStatus,
+            csrfmiddlewaretoken: document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        success: (response) => {
+            console.log('Status updated successfully:', response);
+        },
+        error: (xhr, status, error) => {
+            console.error('Error updating status:', error);
+        }
+    });
+
     updateDropzones();
-  }
+};
+
+
   
-  const updateDropzones = () => {
-      /* after dropping, refresh the drop target areas
-        so there is a dropzone after each item
-        using jQuery here for simplicity */
-      
+  const updateDropzones = () => { 
       var dz = $('<div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>');
       
-      // delete old dropzones
       $('.dropzone').remove();
   
-      // insert new dropdzone after each item   
       dz.insertAfter('.card.draggable');
       
-      // insert new dropzone in any empty swimlanes
       $(".items:not(:has(.card.draggable))").append(dz);
   };
   
-  // helpers
   function hasClass(target, className) {
       return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
   }
