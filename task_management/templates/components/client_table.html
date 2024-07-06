@@ -25,7 +25,7 @@
                     <td class="{% if client.active %}active-true{% else %}active-false{% endif %}">
                         {% if client.active %} Active {% else %} Inactive {% endif %}
                     </td>
-                    <td>{{ client.user.username }}</td>
+                    <td>{{ client.user.username|title }}</td>
                     <td>{{ client.created_date }}</td>
                 </tr>
                 {% endfor %}
