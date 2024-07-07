@@ -16,6 +16,17 @@ COST_APPROVAL_REQUEST_STATUS_CHOICES = (
     ('rejected','Rejected'),
 )
 
+BILL_STATUS_CHOICES = (
+    ('draft','Draft'),
+    ('sent', 'Sent'),
+    ('paid','Paid'),
+)
+
+PAYMENT_REQUEST_STATUS_CHOICES = (
+    ('draft','Draft'),
+    ('sent', 'Sent'),
+    ('paid','Paid'),
+)
 
 class Cost(models.Model):
     name = models.CharField(max_length=225)
@@ -40,5 +51,42 @@ class CostApprovalRequest(models.Model):
     def __str__(self):
         return self.name
 
+class Bill(models.Model):
+    name = models.CharField(max_length=225)
+    client = models.ForeignKey(Client, null = False, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, null = True, on_delete=models.CASCADE)
+    description = models.TextField()
+    bill_registered_date = models.DateField()
+    bill_paid_date = models.DateField()
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=225, choices=BILL_STATUS_CHOICES, default = 'back_log')
+    created_date = models.DateField(auto_now_add=True)
+
+class PaymentRequest(models.Model):
+    name = models.CharField(max_length=225)
+    description = models.TextField()
+    bill = models.ForeignKey(Bill, null = False, on_delete=models.CASCADE)
+    cost = models.ForeignKey(Cost, null = False, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    status = models.CharField(max_length=225, choices=PAYMENT_REQUEST_STATUS_CHOICES, default = 'back_log')
+    created_date = models.DateField(auto_now_add=True)
+
 class Payment(models.Model):
-    pass
+    name = models.CharField(max_length=225)
+    cost = models.ForeignKey(Cost, null = False, on_delete=models.CASCADE)
+    bill = models.ForeignKey(Bill, null = False, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, null = False, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, null = True, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, null = True, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    created_date = models.DateField(auto_now_add=True)
+
+
+
+
+
+
+
+
+
+
