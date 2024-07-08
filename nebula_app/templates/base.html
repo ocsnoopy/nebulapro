@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     {% block extra_css %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
+    <style>
+      .dropdown-menu-right-custom {
+        right: auto;
+        left: -10px; 
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
@@ -22,7 +28,7 @@
             </a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Users</a>
-              <a class="dropdown-item" href="{% url 'roles-list' %}">Roles</a>
+              <a class="dropdown-item" href="{% url 'roles_list' %}">Roles</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -47,10 +53,31 @@
             </div>
           </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+          {% if not user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Login/Register
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-right-custom">
+              <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+              <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <form action="{% url 'logout' %}" method="post" class="form-inline">
+              {% csrf_token %}
+              <button type="submit" id="logout" class="nav-link btn btn-link">Logout</button>
+            </form>
+          </li>
+          {% endif %}
+        </ul>
       </div>
     </nav>    
     {% block content %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  </body>
 </html>
