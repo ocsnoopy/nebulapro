@@ -1,36 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Roles{% endblock %}
+{% block title %}Payment Requests{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/roles-list.css' %}">
+<link rel="stylesheet" href="{% static 'css/costs.css' %}">
 {% endblock %}
 
 {% block content %}
     <div class="container table-container">
         <div class="table-responsive">
-            <h1 class="text-center mb-4">Roles List</h1>
+            <h1 class="text-center mb-4">Payment Requests</h1>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Bill</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Created Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for role in roles %}
+                    {% for request in payment_requests %}
                     <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ role.name }}</td>
-                        <td>{{ role.description }}</td>
-                        <td>{{ role.created_date }}</td>
+                        <td>{{ request.name }}</td>
+                        <td>{{ request.description }}</td>
+                        <td>{{ request.bill }}</td>
+                        <td>{{ request.cost }}</td>
+                        <td>€{{ request.amount }}</td>
+                        <td class="status-{{ request.status }}">{{ request.get_status_display }}</td>
+                        <td>{{ request.created_date }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-    </div>      
+    </div>
 {% endblock %}

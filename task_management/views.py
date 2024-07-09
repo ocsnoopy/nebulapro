@@ -51,3 +51,13 @@ def project_tasks(request, project_id):
         'project': project,
         'status_data': status_data
     })
+
+class ProjectsListView(ListView):
+    model = Project
+    template_name = 'clients/project_list.html'
+    context_object_name = 'allprojects'
+
+class TasksListView(ListView):
+    model = Task
+    template_name = 'clients/task_list.html'
+    context_object_name = 'alltasks'

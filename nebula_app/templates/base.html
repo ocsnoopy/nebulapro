@@ -27,8 +27,8 @@
               User Management
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Users</a>
-              <a class="dropdown-item" href="{% url 'roles_list' %}">Roles</a>
+              <a class="dropdown-item" href="{% url 'users-list' %}">Users</a>
+              <a class="dropdown-item" href="{% url 'roles-list' %}">Roles</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -39,8 +39,8 @@
               <a class="dropdown-item" href="{% url 'client-list' %}">Clients</a>
               <a class="dropdown-item" href="{% url 'industries-list' %}">Industries</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Projects</a>
-              <a class="dropdown-item" href="#">Tasks</a>
+              <a class="dropdown-item" href="{% url 'projects-list' %}">Projects</a>
+              <a class="dropdown-item" href="{% url 'tasks-list' %}">Tasks</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -50,6 +50,10 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{% url 'cost-approval-requests'%}">Cost Approval Requests</a>
               <a class="dropdown-item" href="{% url 'costs' %}">Costs</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'bills'%}">Bills</a>
+              <a class="dropdown-item" href="{% url 'payment-requests'%}">Payment Requests</a>
+              <a class="dropdown-item" href="{% url 'payments'%}">Payments</a>
             </div>
           </li>
         </ul>

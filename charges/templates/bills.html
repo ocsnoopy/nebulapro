@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bills{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/costs.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container table-container">
+        <div class="table-responsive">
+            <h1 class="text-center mb-4">Bills</h1>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Project</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Registered Date</th>
+                        <th scope="col">Paid Date</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Created Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bill in bills %}
+                    <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ bill.name }}</td>
+                        <td>{{ bill.client }}</td>
+                        <td>{{ bill.project }}</td>
+                        <td>{{ bill.description }}</td>
+                        <td>{{ bill.bill_registered_date }}</td>
+                        <td>{{ bill.bill_paid_date }}</td>
+                        <td>€{{ bill.total }}</td>
+                        <td class="status-{{ bill.status }}">{{ bill.get_status_display }}</td>
+                        <td>{{ bill.created_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

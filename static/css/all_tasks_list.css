@@ -1,0 +1,71 @@
+/* Ensure the body and container styles remain the same */
+
+/* Apply project-header style to the task-header */
+.task-header {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Adjust table-container to handle horizontal overflow */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Apply project-table styles to the task-table */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-table th,
+.task-table td {
+    padding: 12px; /* Adjust padding to 12px */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #f0f0f0;
+}
+
+.task-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.task-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Define status classes for different statuses */
+.status-back-log {
+    background-color: #CCCCCC;
+    color: #ffffff;
+}
+
+.status-in-progress {
+    background-color: #FFFF99;
+    color: #333;
+}
+
+.status-in-review {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.status-ready-for-schedule {
+    background-color: #ADD8E6;
+    color: #333;
+}
+
+.status-scheduled {
+    background-color: #FFA500;
+    color: #333;
+}
+
+.status-done {
+    background-color: #90EE90;
+    color: #333;
+}
