@@ -1,0 +1,44 @@
+/* Ensure the body and container styles remain the same */
+
+/* Apply project-header style to the task-header */
+.task-header {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Adjust table-container to handle horizontal overflow */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Apply project-table styles to the task-table */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-table th,
+.task-table td {
+    padding: 12px; /* Adjust padding to 12px */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #f0f0f0;
+}
+
+.task-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.task-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+h1 {
+    margin-top: 30px;
+}
