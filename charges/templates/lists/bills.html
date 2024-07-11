@@ -24,6 +24,7 @@
                         <th scope="col">Total Amount</th>
                         <th scope="col">Status</th>
                         <th scope="col">Created Date</th>
+                        <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,7 @@
                         <td>€{{ bill.total }}</td>
                         <td class="status-{{ bill.status }}">{{ bill.get_status_display }}</td>
                         <td>{{ bill.created_date }}</td>
+                        <td><a href="{% url 'edit_bill' bill.id %}" class="btn btn-primary btn-sm">Edit</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

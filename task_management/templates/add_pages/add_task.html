@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<h1>Add Task</h1>
+<br>
+<form method = 'POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class = "btn btn-secondary">Add Task</button>
+</form>
+{% endblock %}

@@ -8,6 +8,10 @@
     {% block extra_css %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
     <style>
+      .main-content {
+        margin: 50px 100px;
+      }
+
       .dropdown-menu-right-custom {
         right: auto;
         left: -10px; 
@@ -48,12 +52,46 @@
               Charges
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="{% url 'cost-approval-requests'%}">Cost Approval Requests</a>
-              <a class="dropdown-item" href="{% url 'costs' %}">Costs</a>
+              <a class="dropdown-item" href="{% url 'cost-approval-requests-list'%}">Cost Approval Requests</a>
+              <a class="dropdown-item" href="{% url 'costs-list' %}">Costs</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'bills'%}">Bills</a>
-              <a class="dropdown-item" href="{% url 'payment-requests'%}">Payment Requests</a>
-              <a class="dropdown-item" href="{% url 'payments'%}">Payments</a>
+              <a class="dropdown-item" href="{% url 'bills-list'%}">Bills</a>
+              <a class="dropdown-item" href="{% url 'payment-requests-list'%}">Payment Requests</a>
+              <a class="dropdown-item" href="{% url 'payments-list'%}">Payments</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Add to User Management
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'add-user' %}">Add User</a>
+              <a class="dropdown-item" href="{% url 'add-role' %}">Add Role</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Add To Task Management
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'add-client' %}">Add Client</a>
+              <a class="dropdown-item" href="{% url 'add-industry' %}">Add Industry</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'add-project' %}">Add Project</a>
+              <a class="dropdown-item" href="{% url 'add-task' %}">Add Task</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Add To Charges
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'add_cost_approval_request' %}"> Add Cost Approval Request</a>
+              <a class="dropdown-item" href="{% url 'add_cost' %}">Add Cost</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'add_bill' %}">Add Bill</a>
+              <a class="dropdown-item" href="{% url 'add_payment_request' %}">Add Payment Request</a>
+              <a class="dropdown-item" href="{% url 'add_payment' %}">Add Payment</a>
             </div>
           </li>
         </ul>
@@ -79,8 +117,10 @@
         </ul>
       </div>
     </nav>    
-    {% block content %}
-    {% endblock %}
+    <div class="main-content">
+      {% block content %}
+      {% endblock %}
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   </body>
