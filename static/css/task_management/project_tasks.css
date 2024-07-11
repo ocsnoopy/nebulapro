@@ -1,13 +1,10 @@
 .card.draggable {
-    margin-bottom: 1rem; 
-    cursor: grab; 
+    margin-bottom: 1rem;
+    cursor: grab;
 }
 
 .droppable {
-    background-color: #28a745; 
-    min-height: 120px; 
-    margin-bottom: 1rem; 
-    padding: 0.5rem; 
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
+    background-color: var(--success);
+    min-height: 120px;
+    margin-bottom: 1rem;
 }
