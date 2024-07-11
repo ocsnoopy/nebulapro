@@ -20,8 +20,8 @@ class SignUpForm(UserCreationForm):
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True, widget = forms.EmailInput(attrs={'class': 'form-control'}))
-    first_name = forms.CharField(max_length=30, required=False, widget = forms.EmailInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(max_length=30, required=False, widget = forms.EmailInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(max_length=30, required=False, widget = forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=30, required=False, widget = forms.TextInput(attrs={'class': 'form-control'}))
     role = forms.ModelChoiceField(queryset=Role.objects.all(), required=True)
 
     class Meta:
@@ -38,8 +38,8 @@ class CustomUserCreationForm(UserCreationForm):
 
 class CustomUserChangeForm(UserChangeForm):
     email = forms.EmailField(required=True, widget = forms.EmailInput(attrs={'class': 'form-control'}))
-    first_name = forms.CharField(max_length=30, required=False, widget = forms.EmailInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(max_length=30, required=False, widget = forms.EmailInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(max_length=30, required=False, widget = forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=30, required=False, widget = forms.TextInput(attrs={'class': 'form-control'}))
     role = forms.ModelChoiceField(queryset=Role.objects.all(), required=True)
 
     class Meta:
