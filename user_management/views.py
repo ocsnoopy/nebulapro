@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView
+from django.contrib.auth.views import PasswordChangeView
 from .models import Role, User
 from django.urls import reverse_lazy
-from .forms import SignUpForm, CustomUserCreationForm, RoleForm, CustomUserChangeForm
+from .forms import SignUpForm, CustomUserCreationForm, RoleForm, CustomUserChangeForm, PasswordChangingForm
 
 class UsersListView(ListView):
     model = User
@@ -48,3 +49,10 @@ class EditRoleView(UpdateView):
     form_class = RoleForm
     template_name = 'edit_pages/edit_role.html'
     success_url = reverse_lazy('roles-list')
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('password_success')
+
+def password_success(request):
+    return render(request, 'registration/password_success.html')
