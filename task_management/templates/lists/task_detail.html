@@ -6,6 +6,7 @@
 {% block content %}
     <div class="container">
         <h1>Task Detail: {{ task.title }}</h1>
+        <br>
         <p><strong>Status:</strong> {{ task.get_status_display }}</p>
         <p><strong>Project:</strong> {{ task.project }}</p>
         <p><strong>Reporter:</strong> {{ task.reporter }}</p>

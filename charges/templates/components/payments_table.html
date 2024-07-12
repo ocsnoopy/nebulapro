@@ -1,0 +1,37 @@
+<div class="container table-container">
+    <div class="table-responsive">
+        <h1 class="text-center mb-4">Payment List</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Bill</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for payment in payments %}
+                <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ payment.name }}</td>
+                    <td>{{ payment.cost }}</td>
+                    <td>{{ payment.bill }}</td>
+                    <td>{{ payment.client }}</td>
+                    <td>{{ payment.project }}</td>
+                    <td>{{ payment.task }}</td>
+                    <td>€{{ payment.amount }}</td>
+                    <td>{{ payment.created_date }}</td>
+                    <td><a href="{% url 'edit_payment' payment.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

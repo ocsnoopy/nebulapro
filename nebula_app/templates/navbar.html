@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <a class="navbar-brand" href="{% url 'home' %}"><strong>NebulaPro</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            User Management
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'users-list' %}">Users</a>
+            <a class="dropdown-item" href="{% url 'roles-list' %}">Roles</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Task Management
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'client-list' %}">Clients</a>
+            <a class="dropdown-item" href="{% url 'industries-list' %}">Industries</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'projects-list' %}">Projects</a>
+            <a class="dropdown-item" href="{% url 'tasks-list' %}">Tasks</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Charges
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'cost-approval-requests-list'%}">Cost Approval Requests</a>
+            <a class="dropdown-item" href="{% url 'costs-list' %}">Costs</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'bills-list'%}">Bills</a>
+            <a class="dropdown-item" href="{% url 'payment-requests-list'%}">Payment Requests</a>
+            <a class="dropdown-item" href="{% url 'payments-list'%}">Payments</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Add to User Management
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add-user' %}">Add User</a>
+            <a class="dropdown-item" href="{% url 'add-role' %}">Add Role</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Add To Task Management
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add-client' %}">Add Client</a>
+            <a class="dropdown-item" href="{% url 'add-industry' %}">Add Industry</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'add-project' %}">Add Project</a>
+            <a class="dropdown-item" href="{% url 'add-task' %}">Add Task</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Add To Charges
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_cost_approval_request' %}"> Add Cost Approval Request</a>
+            <a class="dropdown-item" href="{% url 'add_cost' %}">Add Cost</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'add_bill' %}">Add Bill</a>
+            <a class="dropdown-item" href="{% url 'add_payment_request' %}">Add Payment Request</a>
+            <a class="dropdown-item" href="{% url 'add_payment' %}">Add Payment</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if not user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Login/Register
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-right-custom">
+            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <form action="{% url 'logout' %}" method="post" class="form-inline">
+            {% csrf_token %}
+            <button type="submit" id="logout" class="nav-link btn btn-link">Logout</button>
+          </form>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>    
