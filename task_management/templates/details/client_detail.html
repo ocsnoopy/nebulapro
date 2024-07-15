@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ client.name|title }} Detail {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Client Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" class="form-control" value="{{ client.name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="industry">Industry:</label>
+                        <input type="text" id="industry" class="form-control" value="{{ client.industry }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" class="form-control" value="{{ client.email }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number:</label>
+                        <input type="text" id="phone_number" class="form-control" value="{{ client.phone_number }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="active">Active:</label>
+                        <input type="text" id="active" class="form-control" value="{% if client.active %}Yes{% else %}No{% endif %}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="user">Assigned User:</label>
+                        <input type="text" id="user" class="form-control" value="{{ client.user }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date:</label>
+                        <input type="text" id="created_date" class="form-control" value="{{ client.created_date|date:'F d, Y H:i:s' }}" readonly>
+                    </div>
+                    <a href="{% url 'client-list' %}" class="btn btn-primary">Back to Clients List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

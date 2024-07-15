@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title|title }} Detail {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Project Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" class="form-control" value="{{ project.title }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="client">Client:</label>
+                        <input type="text" id="client" class="form-control" value="{{ project.client }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <input type="text" id="status" class="form-control" value="{{ project.get_status_display }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Start Date:</label>
+                        <input type="text" id="start_date" class="form-control" value="{{ project.start_date|date:'F d, Y' }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">End Date:</label>
+                        <input type="text" id="end_date" class="form-control" value="{{ project.end_date|date:'F d, Y' }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_costs">Total Costs:</label>
+                        <input type="text" id="total_costs" class="form-control" value="{{ project.total_costs }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="active">Active:</label>
+                        <input type="text" id="active" class="form-control" value="{% if project.active %}Yes{% else %}No{% endif %}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date:</label>
+                        <input type="text" id="created_date" class="form-control" value="{{ project.created_date|date:'F d, Y H:i:s' }}" readonly>
+                    </div>
+                    <a href="{% url 'projects-list' %}" class="btn btn-primary">Back to Projects List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

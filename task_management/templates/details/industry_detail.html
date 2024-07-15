@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ industry.name|title }} Detail {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Industry Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" class="form-control" value="{{ industry.name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" class="form-control" rows="5" readonly>{{ industry.description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date:</label>
+                        <input type="text" id="created_date" class="form-control" value="{{ industry.created_date|date:'F d, Y H:i:s' }}" readonly>
+                    </div>
+                    <a href="{% url 'industries-list' %}" class="btn btn-primary">Back to Industries List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

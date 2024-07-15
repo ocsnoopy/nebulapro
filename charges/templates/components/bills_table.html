@@ -21,7 +21,7 @@
                 {% for bill in bills %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ bill.name }}</td>
+                    <td><a href="{% url 'bill-detail' bill.id %}">{{ bill.name }}</a></td>
                     <td>{{ bill.client }}</td>
                     <td>{{ bill.project }}</td>
                     <td>{{ bill.description }}</td>

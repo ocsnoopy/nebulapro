@@ -8,35 +8,5 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container table-container">
-        <div class="table-responsive">
-            <h1 class="text-center mb-4">Industry List</h1>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Created Date</th>
-                        <th scope="col">Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for industry in industries %}
-                    <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ industry.name }}</td>
-                        <td>{{ industry.description }}</td>
-                        <td>{{ industry.created_date }}</td>
-                        <td><a href="{% url 'edit_industry' industry.id %}" class="btn btn-primary btn-sm">Edit</a></td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="5" class="text-center">No industries found.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+    {% include 'components/industry_table.html' %}
 {% endblock %}

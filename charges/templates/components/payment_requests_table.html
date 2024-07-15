@@ -19,7 +19,7 @@
                 {% for request in payment_requests %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ request.name }}</td>
+                    <td><a href="{% url 'payment-request-detail' request.id %}">{{ request.name }}</a></td>
                     <td>{{ request.description }}</td>
                     <td>{{ request.bill }}</td>
                     <td>{{ request.cost }}</td>

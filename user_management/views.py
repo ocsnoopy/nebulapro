@@ -60,3 +60,7 @@ def password_success(request):
 class UserDetailView(DetailView):
     model = User
     template_name = 'details/user_detail.html'
+
+class RoleDetailView(DetailView):
+    model = Role
+    template_name = 'details/role_detail.html'

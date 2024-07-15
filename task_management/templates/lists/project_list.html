@@ -8,45 +8,5 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="project-header">All Projects</h1>
-        <div class="table-container">
-            <table class="project-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Status</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Total Costs</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for project in allprojects %}
-                    <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
-                        <td>{{ forloop.counter }}</td>
-                        <td>
-                            <a href="{% url 'project_tasks' project.id %}">
-                                {{ project.title }}
-                            </a>
-                        </td>
-                        <td class="{% if project.status == 'draft' %}status-draft{% elif project.status == 'in_progress' %}status-in-progress{% elif project.status == 'done' %}status-done{% endif %}">
-                            {{ project.get_status_display|title }}
-                        </td>
-                        <td>{{ project.start_date }}</td>
-                        <td>{{ project.end_date }}</td>
-                        <td>€{{ project.total_costs }}</td>
-                        <td><a href="{% url 'edit_project' project.id %}" class="btn btn-primary btn-sm">Edit</a></td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="7" class="text-center">No projects found.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+    {% include 'components/project_table.html' %}
 {% endblock %}

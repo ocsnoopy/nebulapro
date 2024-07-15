@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RolesListView, UserRegisterView, UsersListView, AddUserView, AddRoleView, EditUserView, EditRoleView, PasswordsChangeView, password_success, UserDetailView
+from .views import RolesListView, UserRegisterView, UsersListView, AddUserView, AddRoleView, EditUserView, EditRoleView, PasswordsChangeView, password_success, UserDetailView, RoleDetailView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
@@ -12,7 +12,8 @@ urlpatterns = [
     path('edit_role/<int:pk>/', EditRoleView.as_view(), name='edit_role'),
     path('password/', login_required(PasswordsChangeView.as_view(template_name = 'registration/change-password.html')), name = 'change_password'),
     path('password_success', password_success, name = 'password_success'),
-    path('user/<int:pk>', UserDetailView.as_view(), name = 'user-detail')
+    path('user/<int:pk>', UserDetailView.as_view(), name = 'user-detail'),
+    path('role/<int:pk>', RoleDetailView.as_view(), name = 'role-detail'),
 ]
 
 

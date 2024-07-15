@@ -32,11 +32,6 @@ class IndustriesListView(ListView):
     template_name = 'lists/industries_list.html'
     context_object_name = 'industries'
 
-class TaskDetailView(DetailView):
-    model = Task
-    template_name = 'lists/task_detail.html'  
-    context_object_name = 'task' 
-
 def project_tasks(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     tasks = Task.objects.filter(project=project)
@@ -112,3 +107,19 @@ class EditTaskView(UpdateView):
     form_class = TaskForm
     template_name = 'edit_pages/edit_task.html'
     success_url = reverse_lazy('tasks-list')
+
+class ClientDetailView(DetailView):
+    model = Client
+    template_name = 'details/client_detail.html'
+
+class IndustryDetailView(DetailView):
+    model = Industry
+    template_name = 'details/industry_detail.html'
+
+class ProjectDetailView(DetailView):
+    model = Project
+    template_name = 'details/project_detail.html'
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'details/task_detail.html'  

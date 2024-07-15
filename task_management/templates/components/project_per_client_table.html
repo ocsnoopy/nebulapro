@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="project-header">All Projects</h1>
+    <h1 class="project-header">Projects for {{ client.name }}</h1>
     <div class="table-container">
         <table class="project-table">
             <thead>
@@ -10,15 +10,14 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Total Costs</th>
-                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
-                {% for project in allprojects %}
+                {% for project in projects %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <td>{{ forloop.counter }}</td>
                     <td>
-                        <a href="{% url 'project_tasks' project.id %}">
+                        <a href="{% url 'project_tasks' project.id%}">
                             {{ project.title }}
                         </a>
                     </td>
@@ -28,11 +27,10 @@
                     <td>{{ project.start_date }}</td>
                     <td>{{ project.end_date }}</td>
                     <td>€{{ project.total_costs }}</td>
-                    <td><a href="{% url 'edit_project' project.id %}" class="btn btn-primary btn-sm">Edit</a></td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="7" class="text-center">No projects found.</td>
+                    <td colspan="6" class="text-center">No projects found for this client.</td>
                 </tr>
                 {% endfor %}
             </tbody>

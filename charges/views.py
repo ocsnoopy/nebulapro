@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import CostApprovalRequest, Cost, Bill, PaymentRequest, Payment
 from .forms import CostForm, CostApprovalRequestForm, BillForm, PaymentRequestForm, PaymentForm
 from django.urls import reverse_lazy
@@ -89,3 +89,25 @@ class EditPaymentView(UpdateView):
     form_class = PaymentForm
     template_name = 'edit_pages/edit_payment.html'  
     success_url = reverse_lazy('payments-list')
+
+class CostApprovalRequestDetailView(DetailView):
+    model = CostApprovalRequest
+    template_name = 'details/cost_approval_request_detail.html'
+    context_object_name = "cost_approval_request"
+
+class CostDetailView(DetailView):
+    model = Cost
+    template_name = 'details/cost_detail.html'
+
+class BillDetailView(DetailView):
+    model = Bill
+    template_name = 'details/bill_detail.html'
+
+class PaymentRequestDetailView(DetailView):
+    model = PaymentRequest
+    template_name = 'details/payment_request_detail.html'
+    context_object_name = 'payment_request'
+
+class PaymentDetailView(DetailView):
+    model = Payment
+    template_name = 'details/payment_detail.html'

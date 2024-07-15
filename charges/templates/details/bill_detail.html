@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ bill.name|title }} Detail {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Bill Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" class="form-control" value="{{ bill.name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="client">Client:</label>
+                        <input type="text" id="client" class="form-control" value="{{ bill.client }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="project">Project:</label>
+                        <input type="text" id="project" class="form-control" value="{{ bill.project }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" class="form-control" rows="5" readonly>{{ bill.description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bill_registered_date">Registered Date:</label>
+                        <input type="text" id="bill_registered_date" class="form-control" value="{{ bill.bill_registered_date|date:'F d, Y' }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="bill_paid_date">Paid Date:</label>
+                        <input type="text" id="bill_paid_date" class="form-control" value="{{ bill.bill_paid_date|date:'F d, Y' }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="total">Total:</label>
+                        <input type="text" id="total" class="form-control" value="{{ bill.total }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <input type="text" id="status" class="form-control" value="{{ bill.get_status_display }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date:</label>
+                        <input type="text" id="created_date" class="form-control" value="{{ bill.created_date|date:'F d, Y' }}" readonly>
+                    </div>
+                    <a href="{% url 'bills-list' %}" class="btn btn-primary">Back to Bills List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

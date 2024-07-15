@@ -20,7 +20,7 @@
                 {% for cost in costs %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ cost.name }}</td>
+                    <td><a href="{% url 'cost-detail' cost.id %}">{{ cost.name }}</a></td>
                     <td>€{{ cost.amount }}</td>
                     <td>{{ cost.client }}</td>
                     <td>{{ cost.task }}</td>

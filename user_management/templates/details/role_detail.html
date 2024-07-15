@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ role.name|title }} Detail {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Role Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" class="form-control" value="{{ role.name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" class="form-control" rows="5" readonly>{{ role.description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date:</label>
+                        <input type="text" id="created_date" class="form-control" value="{{ role.created_date|date:'F d, Y H:i:s' }}" readonly>
+                    </div>
+                    <!-- Add more fields as per your Role model -->
+                    <a href="{% url 'roles-list' %}" class="btn btn-primary">Back to Roles List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

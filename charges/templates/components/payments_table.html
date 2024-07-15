@@ -20,7 +20,7 @@
                 {% for payment in payments %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ payment.name }}</td>
+                    <td><a href="{% url 'payment-detail' payment.id %}">{{ payment.name }}</a></td>
                     <td>{{ payment.cost }}</td>
                     <td>{{ payment.bill }}</td>
                     <td>{{ payment.client }}</td>
