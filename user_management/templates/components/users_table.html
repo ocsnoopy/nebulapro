@@ -16,7 +16,7 @@
                 {% for user in users %}
                 <tr class="{% cycle 'table-striped-row-grey' 'table-striped-row-white' %}">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ user.username }}</td>
+                    <td><a href="{% url 'user-detail' user.id %}">{{ user.username }}</a></td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.role.name }}</td>
                     <td>{{ user.created_date }}</td>

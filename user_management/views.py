@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from django.contrib.auth.views import PasswordChangeView
 from .models import Role, User
 from django.urls import reverse_lazy
@@ -56,3 +56,7 @@ class PasswordsChangeView(PasswordChangeView):
 
 def password_success(request):
     return render(request, 'registration/password_success.html')
+
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'details/user_detail.html'

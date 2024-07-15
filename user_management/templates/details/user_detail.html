@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ user.username|title }} Detail {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Details for User "{{user.username|title}}"</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" class="form-control" value="{{ user.username }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" class="form-control" value="{{ user.first_name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" id="last_name" class="form-control" value="{{ user.last_name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" class="form-control" value="{{ user.email }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role:</label>
+                        <input type="text" id="role" class="form-control" value="{{ user.role }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_date">Created Date:</label>
+                        <input type="text" id="created_date" class="form-control" value="{{ user.created_date|date:'F d, Y H:i:s' }}" readonly>
+                    </div>
+                    <a href="{% url 'users-list' %}" class="btn btn-primary">Back to Users List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
