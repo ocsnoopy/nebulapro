@@ -1,5 +1,7 @@
 from django.db import models
 from task_management.models import Client, Task, Project
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 COST_STATUS_CHOICES = (
     ('requested','Requested'),
@@ -40,6 +42,15 @@ class Cost(models.Model):
 
     def __str__(self):
         return self.name
+
+@receiver(post_save, sender=Cost)
+def create_cost_approval_request(sender, instance, created, *args, **kwargs):
+    if created:
+        CostApprovalRequest.objects.create(
+            name=f"Approval for {instance.name}",
+            cost=instance,
+            task=instance.task
+        )
 
 class CostApprovalRequest(models.Model):
     name = models.CharField(max_length=225)
