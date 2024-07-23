@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Approval Request Email</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 20px;
+        }
+        .btn-primary {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Dear {{ cost_client_name }},</p>
+        <p>We have submitted an approval request for the cost item <strong>{{ cost_name }}</strong>.</p>
+        <p>Approval Request Name: <strong>{{ approval_request_name }}</strong></p>
+        <p>Related Task: <strong>{{ task_name }}</strong></p>
+        <p>You can view the details below:</p>
+        <a href="{{ approval_url }}" class="btn btn-primary">Manage Cost Approval</a>
+        <p>Thank you.</p>
+    </div>
+</body>
+</html>

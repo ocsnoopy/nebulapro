@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import CostApprovalRequest, Cost, Bill, PaymentRequest, Payment
 from .forms import CostForm, CostApprovalRequestForm, BillForm, PaymentRequestForm, PaymentForm
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 class CostApprovalRequestsView(ListView):
     model = CostApprovalRequest
@@ -111,3 +112,29 @@ class PaymentRequestDetailView(DetailView):
 class PaymentDetailView(DetailView):
     model = Payment
     template_name = 'details/payment_detail.html'
+
+def cost_approval_details(request, approval_id):
+    approval = get_object_or_404(CostApprovalRequest, pk=approval_id)
+    return render(request, 'cost_approval_details.html', {'approval': approval})
+
+def reject_approval(request, approval_id):
+    approval = get_object_or_404(CostApprovalRequest, pk=approval_id)
+    if request.method == 'POST':
+        approval.status = 'rejected'
+        approval.save()
+        approval.cost.status = 'rejected'
+        approval.cost.save()
+        messages.success(request, 'Approval request rejected successfully.')
+        return redirect('home')
+    return render(request, 'cost_approval_details.html', {'approval': approval})
+
+def approve_approval(request, approval_id):
+    approval = get_object_or_404(CostApprovalRequest, pk=approval_id)
+    if request.method == 'POST':
+        approval.status = 'accepted'
+        approval.save()
+        approval.cost.status = 'approved'
+        approval.cost.save()
+        messages.success(request, 'Approval request approved successfully.')
+        return redirect('home') 
+    return render(request, 'cost_approval_details.html', {'approval': approval})

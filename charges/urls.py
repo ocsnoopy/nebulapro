@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CostApprovalRequestsView, CostsView, BillsView, PaymentRequestsView, PaymentsView, AddCostView, AddCostApprovalRequestView, AddBillView, AddPaymentRequestView, AddPaymentView, EditCostView, EditCostApprovalRequestView, EditBillView, EditPaymentRequestView, EditPaymentView, CostApprovalRequestDetailView, CostDetailView, BillDetailView, PaymentRequestDetailView, PaymentDetailView
+from .views import CostApprovalRequestsView, CostsView, BillsView, PaymentRequestsView, PaymentsView, AddCostView, AddCostApprovalRequestView, AddBillView, AddPaymentRequestView, AddPaymentView, EditCostView, EditCostApprovalRequestView, EditBillView, EditPaymentRequestView, EditPaymentView, CostApprovalRequestDetailView, CostDetailView, BillDetailView, PaymentRequestDetailView, PaymentDetailView, cost_approval_details, reject_approval, approve_approval
 
 urlpatterns = [
     path('cost-approval-requests/', CostApprovalRequestsView.as_view(), name='cost-approval-requests-list'),
@@ -22,5 +22,8 @@ urlpatterns = [
     path('bill/<int:pk>', BillDetailView.as_view(), name = 'bill-detail'),
     path('payment_request/<int:pk>', PaymentRequestDetailView.as_view(), name = 'payment-request-detail'),
     path('payment/<int:pk>', PaymentDetailView.as_view(), name = 'payment-detail'),
+    path('cost-approval/<int:approval_id>/', cost_approval_details, name='cost_approval_details'),
+    path('cost-approval/<int:approval_id>/reject/', reject_approval, name='reject_approval'),
+    path('cost-approval/<int:approval_id>/approve/', approve_approval, name='approve_approval'),
 ]
 
